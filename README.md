@@ -69,9 +69,9 @@ curl http://localhost:8001/health  # File Storing Service
 curl http://localhost:8002/health  # File Analysis Service
 ```
 
-## ⚠ Важно: Архитектура доступа
+## Важно: Архитектура доступа
 
-**Используйте только порт 8000** для работы с системой:
+**Использовать только порт 8000** для работы с системой:
 - ✅ **http://localhost:8000** - веб-интерфейс и API
 - ❌ **http://localhost:8001** - только внутренний API (File Storage)  
 - ❌ **http://localhost:8002** - только внутренний API (File Analysis)
@@ -256,7 +256,3 @@ curl http://localhost:8000/api/files/d878a80a-20b4-41fb-aad7-05ec8c590721/stats
 - **Swagger JSON**: http://localhost:8000/swagger/v1/swagger.json
 - **File Service Health**: http://localhost:8001/health
 - **Analysis Service Health**: http://localhost:8002/health
-
----
-
-**Система готова к работе после запуска всех сервисов.**
