@@ -97,7 +97,6 @@ curl http://localhost:8000/health
 ### Загрузить тестовый файл
 ```bash
 curl -X POST -F "file=@test.txt" http://localhost:8000/api/files
-# Получите JSON с информацией о файле
 ```
 
 ## Тесты
@@ -179,14 +178,6 @@ POST /api/analysis/compare       # Сравнить файлы
 GET  /api/analysis/{id}/wordcloud # Облако слов
 ```
 
-### Быстрые ссылки:
-- **Веб-интерфейс**: http://localhost:8000
-- **Health Check**: http://localhost:8000/health
-- **API Files**: http://localhost:8000/api/files
-- **Swagger JSON**: http://localhost:8000/swagger/v1/swagger.json
-- **File Service Health**: http://localhost:8001/health
-- **Analysis Service Health**: http://localhost:8002/health
-
 ## Возможные проблемы
 
 ### Сервисы не запускаются
@@ -208,20 +199,3 @@ dotnet build file_analysis_service/
 - Подождите 10 секунд после запуска
 - Обновите страницу
 
-## Технические детали
-
-### Архитектура
-- 3 микросервиса на .NET 8
-- JSON для хранения метаданных
-- SHA-256 для поиска дубликатов
-- REST API для всех операций
-
-### Требования
-- .NET 8 SDK
-- 500MB RAM
-- Свободные порты 8000-8002
-
-### Файлы
-- Поддерживаются только .txt файлы
-- Максимальный размер: 10MB
-- Кодировка: UTF-8
