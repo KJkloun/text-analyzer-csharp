@@ -243,8 +243,8 @@ curl http://localhost:8000/api/files/d878a80a-20b4-41fb-aad7-05ec8c590721/stats
 После запуска сервисов API доступно по следующим адресам:
 
 - **API Gateway**: http://localhost:8000/api/*
-- **File Storing Service**: http://localhost:8001/api/*  
-- **File Analysis Service**: http://localhost:8002/api/*
+- **File Storing Service**: http://localhost:8001*  
+- **File Analysis Service**: http://localhost:8002*
 
 Для тестирования API рекомендуется использовать curl или Postman.
 
