@@ -223,16 +223,6 @@ curl http://localhost:8000/api/files/d878a80a-20b4-41fb-aad7-05ec8c590721/stats
 # Ответ: {"FileId":"d878a80a-...","WordCount":25,"CharacterCount":199,"ParagraphCount":2}
 ```
 
-### Python скрипт
-```python
-import requests
-
-# Загрузить файл
-with open('text.txt', 'rb') as f:
-    response = requests.post('http://localhost:8000/api/files', files={'file': f})
-    print(response.json())
-```
-
 ## Алгоритмы
 
 ### Подсчёт статистики
