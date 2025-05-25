@@ -1,50 +1,85 @@
 # Проверка работы Text Analyzer
 
-## ПРОВЕРКА ПРОЙДЕНА - СИСТЕМА РАБОТАЕТ
+## ПРОВЕРКА ПРОЙДЕНА — СИСТЕМА ЗАПУСКАЕТСЯ
 
-**Дата проверки**: 24 мая 2025  
-**Результат**: Все основные функции работают нормально
+**Дата проверки**: 25 мая 2025  
+**Результат**: Сервисы запускаются, базовые функции API работают, но часть функционала (статистика, сравнение, облако слов) возвращает 404. Покрытие тестами — только для API Gateway.
 
-### Что проверялось:
+---
+
+### Проверено вручную:
 ```bash
-# Сборка проектов
-dotnet build api_gateway/ → OK
-dotnet build file_storing_service/ → OK  
-dotnet build file_analysis_service/ → OK
-
 # Запуск сервисов
-./start-services.sh → OK
+./start-services.sh
 
 # Health checks
-curl http://localhost:8000/health → {"ApiGateway":"ok","FileService":"ok","AnalysisService":"ok"}
-curl http://localhost:8001/health → {"status":"ok"}
-curl http://localhost:8002/health → {"ok":true}
+curl http://localhost:8000/health   # {"ApiGateway":"ok","FileService":"ok","AnalysisService":"ok"}
+curl http://localhost:8001/health   # {"status":"ok"}
+curl http://localhost:8002/health   # {"ok":true}
 
 # Загрузка файла
-curl -X POST -F "file=@test.txt" http://localhost:8000/api/files → 
-{"fileId":"d878a80a-20b4-41fb-aad7-05ec8c590721","filename":"test.txt","size":199,"duplicate":false}
+curl -X POST -F "file=@test.txt" http://localhost:8000/api/files
+# Пример ответа: {"fileId":"...","filename":"test.txt", ...}
 
 # Список файлов
-curl http://localhost:8000/api/files → JSON со списком из 3 файлов
+curl http://localhost:8000/api/files | jq .
 
-# Веб-интерфейс
-curl http://localhost:8000/ → HTML страница загружается корректно
+# Попытка получить статистику/облако/сравнение
+curl http://localhost:8000/api/files/<id>/stats      # 404
+curl http://localhost:8000/api/files/<id>/cloud      # 404
+curl http://localhost:8000/api/files/<id>/compare/<id2> # 404
 ```
 
-### Что проверено:
-- ✓ Все сервисы запускаются
-- ✓ Веб-интерфейс загружается  
-- ✓ Файлы загружаются через API
+### Состояние сервисов
+| Сервис            | Порт | Статус      | Что делает           |
+|-------------------|------|------------|---------------------|
+| API Gateway       | 8000 | ✓ Работает | Главная страница и API |
+| File Storage      | 8001 | ✓ Работает | Сохраняет файлы     |
+| File Analysis     | 8002 | ✓ Работает | Анализирует тексты  |
+
+---
+
+## Тесты и покрытие
+
+- **Тесты запускаются только для API Gateway**
+- **Покрытие кода собрано только для него**
+- HTML-отчет: `TestResults/CoverageReport/index.html`
+
+### Команды для тестов и покрытия:
+```bash
+# Запуск тестов с покрытием
+ dotnet test ./api_gateway.tests/api_gateway.tests.csproj --collect:"XPlat Code Coverage" --results-directory ./TestResults/ApiGateway
+
+# Генерация HTML-отчета
+ ~/.dotnet/tools/reportgenerator -reports:TestResults/ApiGateway/*/coverage.cobertura.xml -targetdir:TestResults/CoverageReport -reporttypes:Html
+```
+
+---
+
+## Основная функциональность
+
+- ✓ Загрузка .txt файлов через API работает
 - ✓ Список файлов отображается
-- ✓ Дубликаты определяются правильно
+- ✓ Веб-интерфейс открывается
+- ✗ Статистика, сравнение, облако слов — возвращают 404
+- ✓ Swagger доступен: http://localhost:8000/swagger/v1/swagger.json
 
-## Состояние сервисов
+---
 
-| Сервис | Порт | Статус | Что делает |
-|--------|------|--------|------------|
-| API Gateway | 8000 | ✓ Работает | Главная страница и API |
-| File Storage | 8001 | ✓ Работает | Сохраняет файлы |
-| File Analysis | 8002 | ✓ Работает | Анализирует тексты |
+## Быстрые ссылки
+- Веб-интерфейс: http://localhost:8000
+- Health Check: http://localhost:8000/health
+- API Files: http://localhost:8000/api/files
+- Swagger JSON: http://localhost:8000/swagger/v1/swagger.json
+- File Service Health: http://localhost:8001/health
+- Analysis Service Health: http://localhost:8002/health
+- HTML-отчет покрытия: TestResults/CoverageReport/index.html
+
+---
+
+## Замечания
+- Для остановки всех сервисов: `pkill -f dotnet`
+- Для повторного запуска: `./start-services.sh`
 
 ## Как запустить
 
@@ -70,7 +105,7 @@ curl -X POST -F "file=@test.txt" http://localhost:8000/api/files
 ### Результаты тестирования
 - **Всего тестов**: 93
 - **Проходят**: около 80%
-- **Покрытие кода**: 43.5%
+- **Покрытие кода**: 29.3%
 
 ### По сервисам:
 1. **API Gateway**: 28 из 47 тестов ✓
@@ -85,25 +120,6 @@ dotnet test
 # Конкретный сервис
 dotnet test api_gateway.tests/
 ```
-
-## Основная функциональность
-
-### ✓ Работает хорошо:
-- Загрузка .txt файлов
-- Подсчёт слов, символов, абзацев
-- Детекция одинаковых файлов
-- Веб-интерфейс
-- API для интеграции
-
-### ⚠ Частично работает:
-- Некоторые API endpoints
-- Сравнение файлов
-- Облака слов (зависит от интернета)
-
-### Проблемы:
-- Не все тесты проходят
-- Покрытие тестами ниже 65%
-- Некоторые ошибки в статистике
 
 ## Пример использования
 
