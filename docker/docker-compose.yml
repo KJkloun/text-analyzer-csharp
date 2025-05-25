@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  api-gateway:
+    build:
+      context: ./api_gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceUrls__FileStoringService=http://file-storing-service:8001
+      - ServiceUrls__FileAnalysisService=http://file-analysis-service:8002
+    depends_on:
+      - file-storing-service
+      - file-analysis-service
+    networks:
+      - text-analyzer-network
+
+  file-storing-service:
+    build:
+      context: ./file_storing_service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - FilesDir=/app/files
+    volumes:
+      - file-storage:/app/files
+    networks:
+      - text-analyzer-network
+
+  file-analysis-service:
+    build:
+      context: ./file_analysis_service
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ServiceUrls__FileStoringService=http://file-storing-service:8001
+      - ResultsDir=/app/results
+    volumes:
+      - analysis-results:/app/results
+    networks:
+      - text-analyzer-network
+
+networks:
+  text-analyzer-network:
+    driver: bridge
+
+volumes:
+  file-storage:
+  analysis-results:

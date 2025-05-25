@@ -1,0 +1,30 @@
+Summary - Text-Scanner Coverage Report
+  Generated on: 5/24/2025 - 5:22:55 PM
+  Coverage date: 1/1/2024 - 3:00:00 AM
+  Parser: Cobertura
+  Assemblies: 3
+  Classes: 3
+  Files: 3
+  Line coverage: 84.3%
+  Covered lines: 27
+  Uncovered lines: 5
+  Coverable lines: 32
+  Total lines: 234
+  Branch coverage: 68.7% (22 of 32)
+  Covered branches: 22
+  Total branches: 32
+  Method coverage: 100% (4 of 4)
+  Full method coverage: 0% (0 of 4)
+  Covered methods: 4
+  Fully covered methods: 0
+  Total methods: 4
+  Tag: 20250524-172255
+
+ApiGateway                                           79.1%
+  api_gateway.Controllers.TextScannerController      79.1%
+
+FileAnalysisService                                   100%
+  file_analysis_service.Services.ComparisonService    100%
+
+FileStoringService                                    100%
+  file_storing_service.Services.FileService           100%

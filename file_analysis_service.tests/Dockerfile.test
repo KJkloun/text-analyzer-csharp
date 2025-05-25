@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+
+WORKDIR /src
+
+COPY ../file_analysis_service/*.csproj ./file_analysis_service/
+COPY *.csproj ./
+
+RUN dotnet restore
+
+COPY ../file_analysis_service/ ./file_analysis_service/
+COPY . ./
+
+RUN dotnet tool install -g dotnet-reportgenerator-globaltool
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+RUN dotnet test --collect:"XPlat Code Coverage" --results-directory /TestResults --logger "trx;LogFileName=test-results.trx"
+
+RUN reportgenerator -reports:"/TestResults/**/coverage.cobertura.xml" -targetdir:"/TestResults/coverage-report" -reporttypes:"Html;TextSummary;Cobertura" || true
+
+CMD ["sh", "-c", "echo '=== File Analysis Service Test Results ===' && cat /TestResults/coverage-report/Summary.txt 2>/dev/null || echo 'Coverage report generated'"]

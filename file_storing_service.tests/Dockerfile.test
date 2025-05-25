@@ -1,0 +1,26 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+
+WORKDIR /src
+
+# Копируем файлы проектов
+COPY ../file_storing_service/*.csproj ./file_storing_service/
+COPY *.csproj ./
+
+# Восстанавливаем зависимости
+RUN dotnet restore
+
+# Копируем весь код
+COPY ../file_storing_service/ ./file_storing_service/
+COPY . ./
+
+# Устанавливаем ReportGenerator
+RUN dotnet tool install -g dotnet-reportgenerator-globaltool
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Запускаем тесты с покрытием
+RUN dotnet test --collect:"XPlat Code Coverage" --results-directory /TestResults --logger "trx;LogFileName=test-results.trx"
+
+# Генерируем отчет о покрытии
+RUN reportgenerator -reports:"/TestResults/**/coverage.cobertura.xml" -targetdir:"/TestResults/coverage-report" -reporttypes:"Html;TextSummary;Cobertura" || true
+
+CMD ["sh", "-c", "echo '=== File Storing Service Test Results ===' && cat /TestResults/coverage-report/Summary.txt 2>/dev/null || echo 'Coverage report generated'"]

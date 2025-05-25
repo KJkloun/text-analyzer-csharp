@@ -1,0 +1,32 @@
+{
+  "af5f8709-7e7f-4631-a02a-1bfb6584cf71": {
+    "Id": "af5f8709-7e7f-4631-a02a-1bfb6584cf71",
+    "FileName": "af5f8709-7e7f-4631-a02a-1bfb6584cf71.txt",
+    "OriginalName": "file1.txt",
+    "ContentType": "text/plain",
+    "Size": 41,
+    "UploadDate": "2025-05-24T15:28:51.81789Z",
+    "Hash": "749dd21c4f6d545c293efa3f36544245b3d1fadc96c807ee67deb0355ab0e9ad",
+    "DuplicateOf": ""
+  },
+  "4d1d2491-8f44-4f84-889f-85dc70f5e5ef": {
+    "Id": "4d1d2491-8f44-4f84-889f-85dc70f5e5ef",
+    "FileName": "4d1d2491-8f44-4f84-889f-85dc70f5e5ef.txt",
+    "OriginalName": "file2.txt",
+    "ContentType": "text/plain",
+    "Size": 41,
+    "UploadDate": "2025-05-24T15:28:51.818143Z",
+    "Hash": "749dd21c4f6d545c293efa3f36544245b3d1fadc96c807ee67deb0355ab0e9ad",
+    "DuplicateOf": "af5f8709-7e7f-4631-a02a-1bfb6584cf71"
+  },
+  "d4e31946-b68b-405a-99c5-384a89d18724": {
+    "Id": "d4e31946-b68b-405a-99c5-384a89d18724",
+    "FileName": "d4e31946-b68b-405a-99c5-384a89d18724.txt",
+    "OriginalName": "file3.txt",
+    "ContentType": "text/plain",
+    "Size": 41,
+    "UploadDate": "2025-05-24T15:28:51.818392Z",
+    "Hash": "749dd21c4f6d545c293efa3f36544245b3d1fadc96c807ee67deb0355ab0e9ad",
+    "DuplicateOf": "af5f8709-7e7f-4631-a02a-1bfb6584cf71"
+  }
+}

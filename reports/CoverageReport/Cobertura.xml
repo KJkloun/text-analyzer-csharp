@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage line-rate="0.84375" branch-rate="0.6875" lines-covered="27" lines-valid="32" branches-covered="22" branches-valid="32" complexity="NaN" version="0" timestamp="1748107375">
+  <sources>
+    <source>/src</source>
+  </sources>
+  <packages>
+    <package name="ApiGateway" line-rate="0.7916666666666666" branch-rate="0.6428571428571429" complexity="NaN">
+      <classes>
+        <class name="api_gateway.Controllers.TextScannerController" filename="/src/api_gateway/Controllers/TextScannerController.cs" line-rate="0.7916666666666666" branch-rate="0.6428571428571429" complexity="NaN">
+          <methods>
+            <method name="UploadFileAsync" signature="(IFormFile)" line-rate="0.8571428571428571" branch-rate="0.75">
+              <lines>
+                <line number="45" hits="12" branch="false" />
+                <line number="46" hits="12" branch="false" />
+                <line number="47" hits="12" branch="false" />
+                <line number="48" hits="8" branch="true" condition-coverage="75% (3/4)" />
+                <line number="49" hits="8" branch="false" />
+                <line number="50" hits="8" branch="false" />
+                <line number="51" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetFileStatisticsAsync" signature="(string)" line-rate="0.8333333333333334" branch-rate="0.6666666666666666">
+              <lines>
+                <line number="85" hits="6" branch="false" />
+                <line number="86" hits="6" branch="false" />
+                <line number="87" hits="6" branch="true" condition-coverage="67% (2/3)" />
+                <line number="88" hits="4" branch="false" />
+                <line number="89" hits="4" branch="false" />
+                <line number="90" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="DeleteFileAsync" signature="(string)" line-rate="0.8" branch-rate="0.5">
+              <lines>
+                <line number="125" hits="4" branch="false" />
+                <line number="126" hits="4" branch="false" />
+                <line number="127" hits="4" branch="true" condition-coverage="50% (1/2)" />
+                <line number="128" hits="2" branch="false" />
+                <line number="129" hits="0" branch="false" />
+              </lines>
+            </method>
+            <method name="GetFilesAsync" signature="()" line-rate="0.6666666666666666" branch-rate="0.6">
+              <lines>
+                <line number="160" hits="4" branch="false" />
+                <line number="161" hits="4" branch="false" />
+                <line number="162" hits="4" branch="true" condition-coverage="60% (3/5)" />
+                <line number="163" hits="2" branch="false" />
+                <line number="164" hits="0" branch="false" />
+                <line number="165" hits="0" branch="false" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="45" hits="12" branch="false" />
+            <line number="46" hits="12" branch="false" />
+            <line number="47" hits="12" branch="false" />
+            <line number="48" hits="8" branch="true" condition-coverage="75% (3/4)" />
+            <line number="49" hits="8" branch="false" />
+            <line number="50" hits="8" branch="false" />
+            <line number="51" hits="0" branch="false" />
+            <line number="85" hits="6" branch="false" />
+            <line number="86" hits="6" branch="false" />
+            <line number="87" hits="6" branch="true" condition-coverage="67% (2/3)" />
+            <line number="88" hits="4" branch="false" />
+            <line number="89" hits="4" branch="false" />
+            <line number="90" hits="0" branch="false" />
+            <line number="125" hits="4" branch="false" />
+            <line number="126" hits="4" branch="false" />
+            <line number="127" hits="4" branch="true" condition-coverage="50% (1/2)" />
+            <line number="128" hits="2" branch="false" />
+            <line number="129" hits="0" branch="false" />
+            <line number="160" hits="4" branch="false" />
+            <line number="161" hits="4" branch="false" />
+            <line number="162" hits="4" branch="true" condition-coverage="60% (3/5)" />
+            <line number="163" hits="2" branch="false" />
+            <line number="164" hits="0" branch="false" />
+            <line number="165" hits="0" branch="false" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="FileAnalysisService" line-rate="1" branch-rate="0.7142857142857143" complexity="NaN">
+      <classes>
+        <class name="file_analysis_service.Services.ComparisonService" filename="/src/file_analysis_service/Services/ComparisonService.cs" line-rate="1" branch-rate="0.7142857142857143" complexity="NaN">
+          <methods />
+          <lines>
+            <line number="35" hits="12" branch="false" />
+            <line number="36" hits="12" branch="false" />
+            <line number="37" hits="12" branch="false" />
+            <line number="38" hits="10" branch="true" condition-coverage="71% (5/7)" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="FileStoringService" line-rate="1" branch-rate="0.7272727272727273" complexity="NaN">
+      <classes>
+        <class name="file_storing_service.Services.FileService" filename="/src/file_storing_service/Services/FileService.cs" line-rate="1" branch-rate="0.7272727272727273" complexity="NaN">
+          <methods />
+          <lines>
+            <line number="25" hits="17" branch="false" />
+            <line number="26" hits="17" branch="false" />
+            <line number="27" hits="17" branch="false" />
+            <line number="28" hits="15" branch="true" condition-coverage="73% (8/11)" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

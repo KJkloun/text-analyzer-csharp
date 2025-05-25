@@ -1,0 +1,132 @@
+{
+  "333375d5-052a-46ca-b8c0-9e591b51dfef": {
+    "Id": "333375d5-052a-46ca-b8c0-9e591b51dfef",
+    "FileName": "333375d5-052a-46ca-b8c0-9e591b51dfef.txt",
+    "OriginalName": "test1.txt",
+    "ContentType": "text/plain",
+    "Size": 48,
+    "UploadDate": "2025-05-24T14:44:09.451593Z",
+    "Hash": "c05df8012fd32aa564f37e4623ec40ac3267d8cd865f17bbd23b9ae0879f5b20",
+    "DuplicateOf": ""
+  },
+  "852762fb-45f8-40d6-9d70-a4290c2aba15": {
+    "Id": "852762fb-45f8-40d6-9d70-a4290c2aba15",
+    "FileName": "852762fb-45f8-40d6-9d70-a4290c2aba15.txt",
+    "OriginalName": "test2.txt",
+    "ContentType": "text/plain",
+    "Size": 48,
+    "UploadDate": "2025-05-24T14:44:09.465901Z",
+    "Hash": "c05df8012fd32aa564f37e4623ec40ac3267d8cd865f17bbd23b9ae0879f5b20",
+    "DuplicateOf": "333375d5-052a-46ca-b8c0-9e591b51dfef"
+  },
+  "78a21cd2-18b1-4d27-9f17-d237eaf1a1b8": {
+    "Id": "78a21cd2-18b1-4d27-9f17-d237eaf1a1b8",
+    "FileName": "78a21cd2-18b1-4d27-9f17-d237eaf1a1b8.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 58,
+    "UploadDate": "2025-05-24T14:44:09.472103Z",
+    "Hash": "cc4e6ec08305235fa77f65ef2d382e0bb9e284ad06faa74b6e192890730d2e72",
+    "DuplicateOf": ""
+  },
+  "1ba0bcf0-638a-4f4a-a9ad-44d04b6b83cd": {
+    "Id": "1ba0bcf0-638a-4f4a-a9ad-44d04b6b83cd",
+    "FileName": "1ba0bcf0-638a-4f4a-a9ad-44d04b6b83cd.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 25,
+    "UploadDate": "2025-05-24T14:44:09.473439Z",
+    "Hash": "7f6ceb6ad633072586f4d04f870bc504ee0d45e33946078f00138f111921f8a5",
+    "DuplicateOf": ""
+  },
+  "9547fd1c-b53f-4658-9409-e120b953d767": {
+    "Id": "9547fd1c-b53f-4658-9409-e120b953d767",
+    "FileName": "9547fd1c-b53f-4658-9409-e120b953d767.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 20,
+    "UploadDate": "2025-05-24T14:44:09.474857Z",
+    "Hash": "726df8bcc21cb319dde031e10a3ab40ee5ce4979cef01451a9be341fec8e8153",
+    "DuplicateOf": ""
+  },
+  "83b3199a-dd31-4570-9e1d-465e8822adcc": {
+    "Id": "83b3199a-dd31-4570-9e1d-465e8822adcc",
+    "FileName": "83b3199a-dd31-4570-9e1d-465e8822adcc.txt",
+    "OriginalName": "test1.txt",
+    "ContentType": "text/plain",
+    "Size": 9,
+    "UploadDate": "2025-05-24T14:44:09.476493Z",
+    "Hash": "cd56d06409d269dbc1ace470081f1d32ed50906679b2bacfd4044348770493c4",
+    "DuplicateOf": ""
+  },
+  "8d3ef7aa-07be-42c1-849f-00c264d146bf": {
+    "Id": "8d3ef7aa-07be-42c1-849f-00c264d146bf",
+    "FileName": "8d3ef7aa-07be-42c1-849f-00c264d146bf.txt",
+    "OriginalName": "test2.txt",
+    "ContentType": "text/plain",
+    "Size": 9,
+    "UploadDate": "2025-05-24T14:44:09.476765Z",
+    "Hash": "1b8707533d362a48d03c920654cb5ac752445f17ca8255fe50e615e344edcd55",
+    "DuplicateOf": ""
+  },
+  "72621f10-7e2d-4e2e-ad55-4e58a932463c": {
+    "Id": "72621f10-7e2d-4e2e-ad55-4e58a932463c",
+    "FileName": "72621f10-7e2d-4e2e-ad55-4e58a932463c.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 36,
+    "UploadDate": "2025-05-24T14:44:09.479489Z",
+    "Hash": "4fc50affe0662ff815b4bd3ca82405afa6f14c97607ea8a7310ac716f693300c",
+    "DuplicateOf": ""
+  },
+  "fb82b1d8-a3dc-4078-90e9-fb22ce7b109d": {
+    "Id": "fb82b1d8-a3dc-4078-90e9-fb22ce7b109d",
+    "FileName": "fb82b1d8-a3dc-4078-90e9-fb22ce7b109d.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 11,
+    "UploadDate": "2025-05-24T14:44:09.480256Z",
+    "Hash": "77f1b6fb3434e4be5067ea261e2edc7f2256d527ace31a2f26e168394367c4da",
+    "DuplicateOf": ""
+  },
+  "b17482c7-3243-4f7e-b514-f6481e4e5227": {
+    "Id": "b17482c7-3243-4f7e-b514-f6481e4e5227",
+    "FileName": "b17482c7-3243-4f7e-b514-f6481e4e5227.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 17,
+    "UploadDate": "2025-05-24T14:44:09.484772Z",
+    "Hash": "d380db7a28d4f21398efc441dce03633f679efb29b47f5db5d336049a5fadb71",
+    "DuplicateOf": ""
+  },
+  "dd812768-f05b-4a73-bcf8-62823e699a57": {
+    "Id": "dd812768-f05b-4a73-bcf8-62823e699a57",
+    "FileName": "dd812768-f05b-4a73-bcf8-62823e699a57.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 14,
+    "UploadDate": "2025-05-24T14:44:09.485522Z",
+    "Hash": "65cd02796eb04565a3108338dc8aa98c19732d75ce66d2a400f83a3f98244264",
+    "DuplicateOf": ""
+  },
+  "0e83938b-3977-44b7-adfe-09524aa007ed": {
+    "Id": "0e83938b-3977-44b7-adfe-09524aa007ed",
+    "FileName": "0e83938b-3977-44b7-adfe-09524aa007ed.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 12,
+    "UploadDate": "2025-05-24T14:44:09.486327Z",
+    "Hash": "9d9595c5d94fb65b824f56e9999527dba9542481580d69feb89056aabaa0aa87",
+    "DuplicateOf": ""
+  },
+  "f90f6e36-1578-4879-acdf-6e9698a59aa6": {
+    "Id": "f90f6e36-1578-4879-acdf-6e9698a59aa6",
+    "FileName": "f90f6e36-1578-4879-acdf-6e9698a59aa6.txt",
+    "OriginalName": "test.txt",
+    "ContentType": "text/plain",
+    "Size": 33,
+    "UploadDate": "2025-05-24T14:44:09.4871Z",
+    "Hash": "d63c78bedc2a349f2b1860ef63ca6f5a7388c296c13e0c2704dcabc7fc298670",
+    "DuplicateOf": ""
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "ea6f10bb-9db4-4074-b4f0-4ab30cb8084c": {
+    "Id": "ea6f10bb-9db4-4074-b4f0-4ab30cb8084c",
+    "FileName": "ea6f10bb-9db4-4074-b4f0-4ab30cb8084c.txt",
+    "OriginalName": "file1.txt",
+    "ContentType": "text/plain",
+    "Size": 9,
+    "UploadDate": "2025-05-24T15:39:17.995828Z",
+    "Hash": "cd56d06409d269dbc1ace470081f1d32ed50906679b2bacfd4044348770493c4",
+    "DuplicateOf": ""
+  },
+  "1ed154a2-403b-4f51-a445-40f88e029fdf": {
+    "Id": "1ed154a2-403b-4f51-a445-40f88e029fdf",
+    "FileName": "1ed154a2-403b-4f51-a445-40f88e029fdf.txt",
+    "OriginalName": "file3.txt",
+    "ContentType": "text/plain",
+    "Size": 9,
+    "UploadDate": "2025-05-24T15:39:17.996355Z",
+    "Hash": "d4e737c5336fcbf8a69550032d107520beb62e222a338591b004f09ba43ab857",
+    "DuplicateOf": ""
+  }
+}

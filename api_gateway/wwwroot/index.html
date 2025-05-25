@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-Scanner | Анализ текстовых файлов</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-search text-primary"></i>
+                    <span>Text-Scanner</span>
+                </div>
+                <nav class="nav">
+                    <a href="#upload" class="nav-link">Загрузка</a>
+                    <a href="#analysis" class="nav-link">Анализ</a>
+                    <a href="#compare" class="nav-link">Сравнение</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Интеллектуальный анализ <span class="text-gradient">текстовых файлов</span>
+                </h1>
+                <p class="hero-description">
+                    Загружайте, анализируйте и сравнивайте текстовые документы с помощью 
+                    современных алгоритмов машинного обучения
+                </p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Статистический анализ</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Детекция плагиата</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cloud"></i>
+                        <span>Облако слов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="section">
+        <div class="container">
+            <h2 class="section-title">Загрузка файлов</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <h3>Перетащите файл сюда или кликните для выбора</h3>
+                    <p>Поддерживаются только файлы .txt (до 10 МБ)</p>
+                    <input type="file" id="fileInput" accept=".txt" hidden>
+                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-plus"></i> Выбрать файл
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Upload Progress -->
+            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">Загрузка...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="analysis" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Результаты анализа</h2>
+            
+            <!-- File List -->
+            <div class="files-grid" id="filesGrid">
+                <!-- Файлы будут добавляться динамически -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Section -->
+    <section id="compare" class="section">
+        <div class="container">
+            <h2 class="section-title">Сравнение файлов</h2>
+            <div class="compare-container">
+                <div class="compare-selectors">
+                    <div class="file-selector">
+                        <label>Первый файл:</label>
+                        <select id="file1Select" class="select">
+                            <option value="">Выберите файл</option>
+                        </select>
+                    </div>
+                    <div class="file-selector">
+                        <label>Второй файл:</label>
+                        <select id="file2Select" class="select">
+                            <option value="">Выберите файл</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="compareBtn" onclick="compareFiles()">
+                    <i class="fas fa-balance-scale"></i> Сравнить файлы
+                </button>
+                
+                <!-- Comparison Results -->
+                <div class="comparison-results" id="comparisonResults" style="display: none;">
+                    <!-- Результаты сравнения -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Обработка файла...</p>
+        </div>
+    </div>
+
+    <script src="script.js?v=2024052401"></script>
+</body>
+</html> 

@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiGateway</name>
+    </assembly>
+    <members>
+        <member name="T:ApiGateway.Controllers.ApiGatewayController">
+            <summary>
+            Контроллер API Gateway для маршрутизации запросов к микросервисам
+            </summary>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.#ctor(System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Конструктор контроллера API Gateway
+            </summary>
+            <param name="httpClientFactory">Фабрика HTTP-клиентов для взаимодействия с микросервисами</param>
+            <param name="configuration">Конфигурация приложения</param>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.GetHealthStatus">
+            <summary>
+            Получение статуса здоровья всех микросервисов
+            </summary>
+            <returns>Статус здоровья API Gateway и всех микросервисов</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загрузка файла через API Gateway
+            </summary>
+            <param name="file">Загружаемый файл</param>
+            <returns>Результат загрузки файла</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.GetFiles">
+            <summary>
+            Получение списка файлов через API Gateway
+            </summary>
+            <returns>Список файлов</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.GetFile(System.String)">
+            <summary>
+            Получение файла по ID через API Gateway
+            </summary>
+            <param name="fileId">ID файла</param>
+            <returns>Содержимое файла</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.AnalyzeFileStatistics(System.String)">
+            <summary>
+            Анализ статистики файла через API Gateway
+            </summary>
+            <param name="fileId">ID файла</param>
+            <returns>Результаты статистического анализа</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.CheckPlagiarism(System.String)">
+            <summary>
+            Проверка файла на плагиат через API Gateway
+            </summary>
+            <param name="fileId">ID файла</param>
+            <returns>Результаты проверки на плагиат</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.GenerateWordCloud(System.String)">
+            <summary>
+            Генерация облака слов для файла через API Gateway
+            </summary>
+            <param name="fileId">ID файла</param>
+            <returns>URL облака слов</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.ApiGatewayController.GetAnalysisResults(System.String)">
+            <summary>
+            Получение результатов анализа по ID через API Gateway
+            </summary>
+            <param name="analysisId">ID результатов анализа</param>
+            <returns>Результаты анализа</returns>
+        </member>
+        <member name="T:ApiGateway.Controllers.TextScannerController">
+            <summary>
+            Главный контроллер API Gateway для проекта Text Scanner
+            </summary>
+        </member>
+        <member name="M:ApiGateway.Controllers.TextScannerController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загружает файл для анализа. Файл проходит проверку на дубликаты и статистический анализ.
+            </summary>
+            <param name="file">Текстовый файл</param>
+            <returns>file_id и статистика или duplicate_of</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.TextScannerController.GetStats(System.String)">
+            <summary>
+            Получает статистику анализа файла по его ID
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>Статистика файла</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.TextScannerController.CompareFiles(ApiGateway.Controllers.CompareRequest)">
+            <summary>
+            Сравнивает два файла и возвращает коэффициент схожести Жаккара
+            </summary>
+            <param name="request">Запрос с идентификаторами файлов</param>
+            <returns>Результат сравнения</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.TextScannerController.GetWordCloud(System.String)">
+            <summary>
+            Получение URL облака слов
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>URL облака слов</returns>
+        </member>
+        <member name="M:ApiGateway.Controllers.TextScannerController.DeleteFile(System.String)">
+            <summary>
+            Удаление файла
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>Результат удаления</returns>
+        </member>
+        <member name="T:ApiGateway.Startup">
+            <summary>
+            Класс Startup для настройки и конфигурации API Gateway
+            </summary>
+        </member>
+        <member name="M:ApiGateway.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Инициализирует новый экземпляр класса Startup
+            </summary>
+            <param name="configuration">Конфигурация приложения</param>
+        </member>
+        <member name="P:ApiGateway.Startup.Configuration">
+            <summary>
+            Получает конфигурацию приложения
+            </summary>
+        </member>
+        <member name="M:ApiGateway.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Настраивает сервисы приложения
+            </summary>
+            <param name="services">Коллекция сервисов</param>
+        </member>
+        <member name="M:ApiGateway.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILogger{ApiGateway.Startup})">
+            <summary>
+            Настраивает конвейер HTTP-запросов
+            </summary>
+            <param name="app">Построитель приложения</param>
+            <param name="env">Среда веб-хостинга</param>
+            <param name="logger">Логгер</param>
+        </member>
+    </members>
+</doc>

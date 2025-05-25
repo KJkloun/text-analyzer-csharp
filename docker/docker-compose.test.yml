@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  file-storing-service-tests:
+    build:
+      context: ./file_storing_service.tests
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./TestResults/file-storing:/TestResults
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Testing
+
+  file-analysis-service-tests:
+    build:
+      context: ./file_analysis_service.tests
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./TestResults/file-analysis:/TestResults
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Testing
+
+  api-gateway-tests:
+    build:
+      context: ./api_gateway.tests
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./TestResults/api-gateway:/TestResults
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Testing 

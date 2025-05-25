@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "generatedon": "2025-05-24T14:22:55Z",
+    "parser": "Cobertura",
+    "assemblies": 3,
+    "classes": 3,
+    "files": 3,
+    "coveredlines": 27,
+    "uncoveredlines": 5,
+    "coverablelines": 32,
+    "totallines": 234,
+    "linecoverage": 84.3,
+    "coveredbranches": 22,
+    "totalbranches": 32,
+    "branchcoverage": 68.7,
+    "coveredmethods": 4,
+    "fullcoveredmethods": 0,
+    "totalmethods": 4,
+    "methodcoverage": 100,
+    "fullmethodcoverage": 0
+ },
+  "coverage": {
+    "assemblies": [
+      { "name": "ApiGateway", "classes": 1, "coverage": 79.1, "coveredlines": 19, "coverablelines": 24, "totallines": 166, "branchcoverage": 64.2, "coveredbranches": 9, "totalbranches": 14, "methodcoverage": 100, "fullmethodcoverage": 0, "coveredmethods": 4, "fullcoveredmethods": 0, "totalmethods": 4, "classesinassembly": [
+        { "name": "api_gateway.Controllers.TextScannerController", "coverage": 79.1, "coveredlines": 19, "coverablelines": 24, "totallines": 166, "branchcoverage": 64.2, "coveredbranches": 9, "totalbranches": 14, "methodcoverage": 100, "fullmethodcoverage": 0, "coveredmethods": 4, "fullcoveredmethods": 0, "totalmethods": 4 } ] },
+      { "name": "FileAnalysisService", "classes": 1, "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 39, "branchcoverage": 71.4, "coveredbranches": 5, "totalbranches": 7, "methodcoverage": null, "fullmethodcoverage": null, "coveredmethods": 0, "fullcoveredmethods": 0, "totalmethods": 0, "classesinassembly": [
+        { "name": "file_analysis_service.Services.ComparisonService", "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 39, "branchcoverage": 71.4, "coveredbranches": 5, "totalbranches": 7, "methodcoverage": null, "fullmethodcoverage": null, "coveredmethods": 0, "fullcoveredmethods": 0, "totalmethods": 0 } ] },
+      { "name": "FileStoringService", "classes": 1, "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 29, "branchcoverage": 72.7, "coveredbranches": 8, "totalbranches": 11, "methodcoverage": null, "fullmethodcoverage": null, "coveredmethods": 0, "fullcoveredmethods": 0, "totalmethods": 0, "classesinassembly": [
+        { "name": "file_storing_service.Services.FileService", "coverage": 100, "coveredlines": 4, "coverablelines": 4, "totallines": 29, "branchcoverage": 72.7, "coveredbranches": 8, "totalbranches": 11, "methodcoverage": null, "fullmethodcoverage": null, "coveredmethods": 0, "fullcoveredmethods": 0, "totalmethods": 0 } ] } ]
+  }
+}

@@ -1,0 +1,65 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+
+WORKDIR /src
+
+# Копируем все проекты
+COPY . .
+
+# Восстанавливаем зависимости для всех тестовых проектов
+RUN dotnet restore file_storing_service.tests/
+RUN dotnet restore file_analysis_service.tests/  
+RUN dotnet restore api_gateway.tests/
+
+# Создаем директорию для результатов
+RUN mkdir -p /TestResults
+
+# Запускаем тесты с покрытием и подробным выводом
+RUN echo "🧪 Running File Storing Service tests..." && \
+    dotnet test file_storing_service.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /TestResults/file-storing \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+RUN echo "🧪 Running File Analysis Service tests..." && \
+    dotnet test file_analysis_service.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /TestResults/file-analysis \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+RUN echo "🧪 Running API Gateway tests..." && \
+    dotnet test api_gateway.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /TestResults/api-gateway \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+# Подсчитываем статистику тестов
+RUN echo "=== TEST SUMMARY ===" > /TestResults/summary.txt && \
+    echo "📊 Total test files:" >> /TestResults/summary.txt && \
+    find . -name "*Tests.cs" -exec grep -l "\[Fact\]\|\[Theory\]" {} \; | wc -l >> /TestResults/summary.txt && \
+    echo "" >> /TestResults/summary.txt && \
+    echo "📋 Total test methods:" >> /TestResults/summary.txt && \
+    grep -r "\[Fact\]\|\[Theory\]" --include="*Tests.cs" . | wc -l >> /TestResults/summary.txt && \
+    echo "" >> /TestResults/summary.txt && \
+    echo "🔍 Breakdown by service:" >> /TestResults/summary.txt && \
+    echo "- API Gateway: $(grep -r "\[Fact\]\|\[Theory\]" api_gateway.tests/ | wc -l) tests" >> /TestResults/summary.txt && \
+    echo "- File Storing: $(grep -r "\[Fact\]\|\[Theory\]" file_storing_service.tests/ | wc -l) tests" >> /TestResults/summary.txt && \
+    echo "- File Analysis: $(grep -r "\[Fact\]\|\[Theory\]" file_analysis_service.tests/ | wc -l) tests" >> /TestResults/summary.txt && \
+    echo "" >> /TestResults/summary.txt && \
+    echo "📈 Code coverage files generated:" >> /TestResults/summary.txt && \
+    find /TestResults -name "coverage.cobertura.xml" >> /TestResults/summary.txt
+
+# Показываем результаты покрытия из XML файлов
+RUN echo "🎯 Extracting coverage percentages from XML files..." && \
+    for xml in /TestResults/*/coverage.cobertura.xml; do \
+        if [ -f "$xml" ]; then \
+            service=$(echo $xml | cut -d'/' -f3); \
+            coverage=$(grep -o 'line-rate="[^"]*"' "$xml" | head -1 | cut -d'"' -f2); \
+            percentage=$(echo "$coverage * 100" | bc -l 2>/dev/null || echo "N/A"); \
+            echo "- $service: ${percentage}% line coverage" >> /TestResults/summary.txt; \
+        fi; \
+    done 2>/dev/null || echo "Coverage calculation complete" >> /TestResults/summary.txt
+
+CMD ["sh", "-c", "echo '🧪 Text-Scanner Test Results' && echo '================================' && cat /TestResults/summary.txt && echo '' && echo '✅ All tests completed successfully!' && echo 'Coverage XML files available in /TestResults/'"] 

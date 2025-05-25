@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/kj/Desktop/text-analyzer-csharp/file_analysis_service/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.FileAnalysisService.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.FileAnalysisService.props",
+      "PackagePath": "build\\FileAnalysisService.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.FileAnalysisService.props",
+      "PackagePath": "buildMultiTargeting\\FileAnalysisService.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.FileAnalysisService.props",
+      "PackagePath": "buildTransitive\\FileAnalysisService.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "epD/CTUeG8eHTrSxhe0w6FhXorIsS4Yn2ohDZkaMLgY=",
+  "Source": "FileAnalysisService",
+  "BasePath": "_content/FileAnalysisService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "FileAnalysisService/wwwroot",
+      "Source": "FileAnalysisService",
+      "ContentRoot": "/Users/kj/Desktop/text-analyzer-csharp/file_analysis_service/wwwroot/",
+      "BasePath": "_content/FileAnalysisService",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/kj/Desktop/text-analyzer-csharp/file_analysis_service/wwwroot/index.html",
+      "SourceId": "FileAnalysisService",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/kj/Desktop/text-analyzer-csharp/file_analysis_service/wwwroot/",
+      "BasePath": "_content/FileAnalysisService",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/index.html"
+    }
+  ]
+}

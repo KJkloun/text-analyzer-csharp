@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FileAnalysisService</name>
+    </assembly>
+    <members>
+        <member name="M:FileAnalysisService.Controllers.AnalysisController.AnalyzeFile(FileAnalysisService.Controllers.AnalyzeRequest)">
+            <summary>
+            Анализирует загруженный файл
+            </summary>
+            <param name="request">Запрос с file_id</param>
+            <returns>Статистика файла или duplicate_of</returns>
+        </member>
+        <member name="M:FileAnalysisService.Controllers.AnalysisController.GetStats(System.String)">
+            <summary>
+            Получение статистики файла
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>Статистика файла</returns>
+        </member>
+        <member name="M:FileAnalysisService.Controllers.AnalysisController.CompareFiles(FileAnalysisService.Controllers.CompareRequest)">
+            <summary>
+            Сравнение двух файлов
+            </summary>
+            <param name="request">Запрос с идентификаторами файлов</param>
+            <returns>Результат сравнения</returns>
+        </member>
+        <member name="M:FileAnalysisService.Controllers.AnalysisController.GetWordCloud(System.String)">
+            <summary>
+            Получение URL облака слов
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>URL облака слов</returns>
+        </member>
+        <member name="M:FileAnalysisService.Controllers.AnalysisController.RemoveFromCache(System.String)">
+            <summary>
+            Удаляет файл из кэша анализа
+            </summary>
+            <param name="id">Идентификатор файла</param>
+            <returns>Результат удаления</returns>
+        </member>
+        <member name="T:FileAnalysisService.Models.AnalysisResult">
+            <summary>
+            Результат анализа файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.AnalysisResult.Id">
+            <summary>
+            Идентификатор результата анализа
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.AnalysisResult.FileId">
+            <summary>
+            Идентификатор анализируемого файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.AnalysisResult.Type">
+            <summary>
+            Тип анализа (статистика, плагиат и т.д.)
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.AnalysisResult.Results">
+            <summary>
+            Результаты анализа
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Models.FileStatistics">
+            <summary>
+            Статистика файла (для совместимости с тестами)
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileStatistics.Paragraphs">
+            <summary>
+            Количество абзацев
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileStatistics.Words">
+            <summary>
+            Количество слов
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileStatistics.Chars">
+            <summary>
+            Количество символов (с пробелами)
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileStatistics.CharsNoSpaces">
+            <summary>
+            Количество символов (без пробелов)
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Models.StatisticsResult">
+            <summary>
+            Результат подсчета статистики
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.StatisticsResult.Paragraphs">
+            <summary>
+            Количество абзацев
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.StatisticsResult.Words">
+            <summary>
+            Количество слов
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.StatisticsResult.Chars">
+            <summary>
+            Количество символов (с пробелами)
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.StatisticsResult.CharsNoSpaces">
+            <summary>
+            Количество символов (без пробелов)
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Models.PlagiarismResult">
+            <summary>
+            Результат проверки на плагиат
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.PlagiarismResult.IsDuplicate">
+            <summary>
+            Является ли файл дубликатом
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.PlagiarismResult.DuplicateOf">
+            <summary>
+            Идентификатор оригинального файла
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Models.WordCloudResult">
+            <summary>
+            Результат генерации облака слов
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.WordCloudResult.WordCloudUrl">
+            <summary>
+            URL к изображению облака слов
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Models.FileMetadata">
+            <summary>
+            Метаданные файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.Id">
+            <summary>
+            Идентификатор файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.FileName">
+            <summary>
+            Имя файла в хранилище
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.OriginalName">
+            <summary>
+            Оригинальное имя файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.ContentType">
+            <summary>
+            Тип содержимого файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.Size">
+            <summary>
+            Размер файла в байтах
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.UploadDate">
+            <summary>
+            Дата загрузки файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.Hash">
+            <summary>
+            Хеш содержимого файла
+            </summary>
+        </member>
+        <member name="P:FileAnalysisService.Models.FileMetadata.DuplicateOf">
+            <summary>
+            Идентификатор оригинального файла (если текущий файл - дубликат)
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Services.PlagiarismService">
+            <summary>
+            Реализация сервиса для проверки текстов на плагиат
+            </summary>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.#ctor(Microsoft.Extensions.Logging.ILogger{FileAnalysisService.Services.PlagiarismService},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Инициализирует новый экземпляр сервиса проверки на плагиат
+            </summary>
+            <param name="logger">Логгер</param>
+            <param name="httpClientFactory">Фабрика HTTP клиентов</param>
+            <param name="configuration">Конфигурация</param>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.CheckPlagiarism(System.String)">
+            <summary>
+            Проверяет файл на плагиат по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результаты проверки на плагиат</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.CheckPlagiarismAsync(System.String)">
+            <summary>
+            Проверяет файл на плагиат по его идентификатору (асинхронная версия)
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результаты проверки на плагиат</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.CheckForDuplicateAsync(System.String,System.String)">
+            <summary>
+            Проверяет файл на дубликат используя SHA-256
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <param name="fileContent">Содержимое файла</param>
+            <returns>Результат проверки на дубликат</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.CompareFilesAsync(System.String,System.String)">
+            <summary>
+            Сравнивает два файла
+            </summary>
+            <param name="fileId1">Идентификатор первого файла</param>
+            <param name="fileId2">Идентификатор второго файла</param>
+            <returns>Результат сравнения</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.ComputeSha256Hash(System.String)">
+            <summary>
+            Вычисляет SHA-256 хэш строки
+            </summary>
+            <param name="content">Содержимое для хэширования</param>
+            <returns>SHA-256 хэш в виде строки</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.CalculateJaccardSimilarity(System.String,System.String)">
+            <summary>
+            Вычисляет коэффициент Жаккара для двух текстов
+            </summary>
+            <param name="text1">Первый текст</param>
+            <param name="text2">Второй текст</param>
+            <returns>Коэффициент Жаккара (0-1)</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.ExtractWords(System.String)">
+            <summary>
+            Извлекает уникальные слова из текста
+            </summary>
+            <param name="text">Текст для анализа</param>
+            <returns>Множество уникальных слов</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.PlagiarismService.RemoveFromDuplicateCache(System.String)">
+            <summary>
+            Удаляет файл из кэша дубликатов
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+        </member>
+        <member name="T:FileAnalysisService.Services.IStatisticsService">
+            <summary>
+            Интерфейс сервиса для статистического анализа текста
+            </summary>
+        </member>
+        <member name="M:FileAnalysisService.Services.IStatisticsService.CalculateStatisticsFromContentAsync(System.String)">
+            <summary>
+            Вычисляет статистические показатели текста
+            </summary>
+            <param name="content">Содержимое текстового файла</param>
+            <returns>Статистические показатели текста</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.IStatisticsService.CalculateStatisticsAsync(System.String)">
+            <summary>
+            Вычисляет и сохраняет статистику для файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Статистические показатели текста</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.IStatisticsService.GetStatisticsAsync(System.String)">
+            <summary>
+            Получает сохраненную статистику для файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Статистические показатели текста или null</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.IStatisticsService.RemoveFromCache(System.String)">
+            <summary>
+            Удаляет статистику файла из кэша
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+        </member>
+        <member name="T:FileAnalysisService.Services.FileStatistics">
+            <summary>
+            Результат статистического анализа файла
+            </summary>
+        </member>
+        <member name="T:FileAnalysisService.Services.StatisticsService">
+            <summary>
+            Реализация сервиса для статистического анализа текста
+            </summary>
+        </member>
+        <member name="M:FileAnalysisService.Services.StatisticsService.#ctor(Microsoft.Extensions.Logging.ILogger{FileAnalysisService.Services.StatisticsService},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Инициализирует новый экземпляр сервиса статистического анализа
+            </summary>
+            <param name="logger">Логгер</param>
+            <param name="httpClientFactory">Фабрика HTTP клиентов</param>
+            <param name="configuration">Конфигурация</param>
+        </member>
+        <member name="M:FileAnalysisService.Services.StatisticsService.CalculateStatisticsFromContentAsync(System.String)">
+            <summary>
+            Вычисляет статистические показатели текста
+            </summary>
+            <param name="content">Содержимое текстового файла</param>
+            <returns>Статистические показатели текста</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.StatisticsService.CalculateStatisticsAsync(System.String)">
+            <summary>
+            Вычисляет и сохраняет статистику для файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Статистические показатели текста</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.StatisticsService.GetStatisticsAsync(System.String)">
+            <summary>
+            Получает сохраненную статистику для файла
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Статистические показатели текста или null</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.StatisticsService.RemoveFromCache(System.String)">
+            <summary>
+            Удаляет статистику файла из кэша
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+        </member>
+        <member name="T:FileAnalysisService.Services.IWordCloudService">
+            <summary>
+            Интерфейс сервиса для генерации облака слов
+            </summary>
+        </member>
+        <member name="M:FileAnalysisService.Services.IWordCloudService.GenerateWordCloudFromContentAsync(System.String)">
+            <summary>
+            Генерирует облако слов на основе текстового содержимого
+            </summary>
+            <param name="content">Текстовое содержимое для генерации облака слов</param>
+            <returns>Результат генерации облака слов с URL изображения</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.IWordCloudService.GenerateWordCloudAsync(System.String)">
+            <summary>
+            Генерирует облако слов для файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результат генерации облака слов с URL изображения</returns>
+        </member>
+        <member name="T:FileAnalysisService.Services.WordCloudService">
+            <summary>
+            Реализация сервиса для генерации облака слов
+            </summary>
+        </member>
+        <member name="M:FileAnalysisService.Services.WordCloudService.#ctor(Microsoft.Extensions.Logging.ILogger{FileAnalysisService.Services.WordCloudService},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Инициализирует новый экземпляр сервиса генерации облака слов
+            </summary>
+            <param name="logger">Логгер</param>
+            <param name="httpClientFactory">Фабрика HTTP клиентов</param>
+            <param name="configuration">Конфигурация</param>
+        </member>
+        <member name="M:FileAnalysisService.Services.WordCloudService.GenerateWordCloudAsync(System.String)">
+            <summary>
+            Генерирует облако слов для файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результат генерации облака слов с URL изображения</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.WordCloudService.GenerateWordCloudFromContentAsync(System.String)">
+            <summary>
+            Генерирует облако слов на основе текстового содержимого
+            </summary>
+            <param name="content">Текстовое содержимое для генерации облака слов</param>
+            <returns>Результат генерации облака слов с URL изображения</returns>
+        </member>
+        <member name="M:FileAnalysisService.Services.WordCloudService.ExtractWords(System.String)">
+            <summary>
+            Извлекает слова и их частоту из текста
+            </summary>
+            <param name="text">Текст для анализа</param>
+            <returns>Словарь слов и их частоты</returns>
+        </member>
+    </members>
+</doc>

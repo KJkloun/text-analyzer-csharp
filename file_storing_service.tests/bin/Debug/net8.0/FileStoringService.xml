@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FileStoringService</name>
+    </assembly>
+    <members>
+        <member name="T:FileStoringService.Controllers.FilesController">
+            <summary>
+            Контроллер для управления файлами
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.#ctor(FileStoringService.Services.IFileService,FileStoringService.Services.Validation.IFileValidationService,Microsoft.Extensions.Logging.ILogger{FileStoringService.Controllers.FilesController})">
+            <summary>
+            Инициализирует новый экземпляр контроллера файлов
+            </summary>
+            <param name="fileService">Сервис для работы с файлами</param>
+            <param name="validationService">Сервис для валидации файлов</param>
+            <param name="logger">Логгер</param>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загружает новый файл
+            </summary>
+            <param name="file">Загружаемый файл</param>
+            <returns>Информация о загруженном файле</returns>
+            <response code="201">Файл успешно загружен</response>
+            <response code="400">Некорректный запрос</response>
+            <response code="500">Внутренняя ошибка сервера</response>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.GetFiles">
+            <summary>
+            Получает список всех файлов
+            </summary>
+            <returns>Список файлов</returns>
+            <response code="200">Список файлов успешно получен</response>
+            <response code="500">Внутренняя ошибка сервера</response>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.GetFile(System.String)">
+            <summary>
+            Получает файл по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Содержимое файла</returns>
+            <response code="200">Файл успешно получен</response>
+            <response code="404">Файл не найден</response>
+            <response code="500">Внутренняя ошибка сервера</response>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.GetFileMetadata(System.String)">
+            <summary>
+            Получает метаданные файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Метаданные файла</returns>
+            <response code="200">Метаданные успешно получены</response>
+            <response code="404">Файл не найден</response>
+            <response code="500">Внутренняя ошибка сервера</response>
+        </member>
+        <member name="M:FileStoringService.Controllers.FilesController.DeleteFile(System.String)">
+            <summary>
+            Удаляет файл по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результат удаления</returns>
+            <response code="200">Файл успешно удален</response>
+            <response code="404">Файл не найден</response>
+            <response code="500">Внутренняя ошибка сервера</response>
+        </member>
+        <member name="T:FileStoringService.Models.FileMetadata">
+            <summary>
+            Представляет метаданные файла в системе
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.Id">
+            <summary>
+            Уникальный идентификатор файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.FileName">
+            <summary>
+            Имя файла в системе хранения
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.OriginalName">
+            <summary>
+            Оригинальное имя загруженного файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.ContentType">
+            <summary>
+            MIME-тип содержимого файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.Size">
+            <summary>
+            Размер файла в байтах
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.UploadDate">
+            <summary>
+            Дата и время загрузки файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.Hash">
+            <summary>
+            Хеш-сумма содержимого файла для проверки на плагиат
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileMetadata.DuplicateOf">
+            <summary>
+            Идентификатор файла-дубликата, если текущий файл является дубликатом
+            </summary>
+        </member>
+        <member name="T:FileStoringService.Models.FileStatistics">
+            <summary>
+            Представляет статистику анализа файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileStatistics.Paragraphs">
+            <summary>
+            Количество абзацев в файле
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileStatistics.Words">
+            <summary>
+            Количество слов в файле
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileStatistics.Chars">
+            <summary>
+            Количество символов в файле
+            </summary>
+        </member>
+        <member name="T:FileStoringService.Models.FileUploadResponse">
+            <summary>
+            Представляет ответ на запрос загрузки файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.FileId">
+            <summary>
+            Уникальный идентификатор загруженного файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.FileName">
+            <summary>
+            Имя загруженного файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.Filename">
+            <summary>
+            Имя загруженного файла (альтернативное свойство)
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.Size">
+            <summary>
+            Размер файла в байтах
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.Duplicate">
+            <summary>
+            Флаг, указывающий, является ли файл дубликатом существующего файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.DuplicateOf">
+            <summary>
+            Идентификатор оригинального файла, если текущий файл является дубликатом
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileUploadResponse.Stats">
+            <summary>
+            Статистика анализа файла
+            </summary>
+        </member>
+        <member name="T:FileStoringService.Models.FileListResponse">
+            <summary>
+            Представляет ответ на запрос списка файлов
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileListResponse.Files">
+            <summary>
+            Список информации о файлах
+            </summary>
+        </member>
+        <member name="T:FileStoringService.Models.FileInfo">
+            <summary>
+            Представляет краткую информацию о файле
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileInfo.Id">
+            <summary>
+            Уникальный идентификатор файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileInfo.Filename">
+            <summary>
+            Имя файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileInfo.Size">
+            <summary>
+            Размер файла в байтах
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileInfo.UploadDate">
+            <summary>
+            Дата и время загрузки файла
+            </summary>
+        </member>
+        <member name="P:FileStoringService.Models.FileInfo.Duplicate">
+            <summary>
+            Флаг, указывающий, является ли файл дубликатом
+            </summary>
+        </member>
+        <member name="T:FileStoringService.Services.IFileService">
+            <summary>
+            Интерфейс сервиса для работы с файлами
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.UploadFileAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загружает файл в систему хранения
+            </summary>
+            <param name="file">Загружаемый файл</param>
+            <returns>Информация о загруженном файле</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.GetFilesAsync">
+            <summary>
+            Получает список всех файлов
+            </summary>
+            <returns>Список файлов</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.GetFileMetadataAsync(System.String)">
+            <summary>
+            Получает метаданные файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Метаданные файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.GetFileAsync(System.String)">
+            <summary>
+            Получает содержимое файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Поток содержимого файла, MIME-тип и имя файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.DeleteFileAsync(System.String)">
+            <summary>
+            Удаляет файл по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результат удаления</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.GetAllFilesAsync">
+            <summary>
+            Получает список всех файлов (альтернативный метод для тестов)
+            </summary>
+            <returns>Список файлов</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.FileExistsAsync(System.String)">
+            <summary>
+            Проверяет существование файла по идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>True если файл существует, False если нет</returns>
+        </member>
+        <member name="M:FileStoringService.Services.IFileService.GetFileContentAsync(System.String)">
+            <summary>
+            Получает содержимое файла как строку
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Содержимое файла</returns>
+        </member>
+        <member name="T:FileStoringService.Services.FileService">
+            <summary>
+            Реализация сервиса для работы с файлами
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{FileStoringService.Services.FileService})">
+            <summary>
+            Инициализирует новый экземпляр сервиса для работы с файлами
+            </summary>
+            <param name="configuration">Конфигурация приложения</param>
+            <param name="logger">Логгер</param>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.LoadMetadata">
+            <summary>
+            Загружает метаданные файлов из JSON-файла
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.SaveMetadata">
+            <summary>
+            Сохраняет метаданные файлов в JSON-файл
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.UploadFileAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Загружает файл в систему хранения
+            </summary>
+            <param name="file">Загружаемый файл</param>
+            <returns>Информация о загруженном файле</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.GetFilesAsync">
+            <summary>
+            Получает список всех файлов
+            </summary>
+            <returns>Список файлов</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.GetFileMetadataAsync(System.String)">
+            <summary>
+            Получает метаданные файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Метаданные файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.GetFileAsync(System.String)">
+            <summary>
+            Получает содержимое файла по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Поток содержимого файла, MIME-тип и имя файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.DeleteFileAsync(System.String)">
+            <summary>
+            Удаляет файл по его идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Результат удаления</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.CalculateFileHash(System.String)">
+            <summary>
+            Вычисляет хэш-сумму файла для проверки на плагиат
+            </summary>
+            <param name="filePath">Путь к файлу</param>
+            <returns>Хэш-сумма файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.FindDuplicateByHash(System.String)">
+            <summary>
+            Ищет дубликат файла по хэш-сумме
+            </summary>
+            <param name="fileHash">Хэш-сумма файла</param>
+            <returns>Идентификатор дубликата или пустая строка</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.CalculateFileStatistics(System.String)">
+            <summary>
+            Вычисляет статистику текстового файла
+            </summary>
+            <param name="content">Содержимое файла</param>
+            <returns>Статистика файла</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.GetAllFilesAsync">
+            <summary>
+            Получает список всех файлов (альтернативный метод для тестов)
+            </summary>
+            <returns>Список файлов</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.FileExistsAsync(System.String)">
+            <summary>
+            Проверяет существование файла по идентификатору
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>True если файл существует, False если нет</returns>
+        </member>
+        <member name="M:FileStoringService.Services.FileService.GetFileContentAsync(System.String)">
+            <summary>
+            Получает содержимое файла как строку
+            </summary>
+            <param name="fileId">Идентификатор файла</param>
+            <returns>Содержимое файла</returns>
+        </member>
+        <member name="T:FileStoringService.Startup">
+            <summary>
+            Класс Startup для настройки и конфигурации сервиса хранения файлов
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Инициализирует новый экземпляр класса Startup
+            </summary>
+            <param name="configuration">Конфигурация приложения</param>
+        </member>
+        <member name="P:FileStoringService.Startup.Configuration">
+            <summary>
+            Получает конфигурацию приложения
+            </summary>
+        </member>
+        <member name="M:FileStoringService.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Настраивает сервисы приложения
+            </summary>
+            <param name="services">Коллекция сервисов</param>
+        </member>
+        <member name="M:FileStoringService.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILogger{FileStoringService.Startup})">
+            <summary>
+            Настраивает конвейер HTTP-запросов
+            </summary>
+            <param name="app">Построитель приложения</param>
+            <param name="env">Среда веб-хостинга</param>
+            <param name="logger">Логгер</param>
+        </member>
+    </members>
+</doc>

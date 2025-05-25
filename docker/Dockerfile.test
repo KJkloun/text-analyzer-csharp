@@ -1,0 +1,39 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+WORKDIR /src
+
+# Копируем все проекты
+COPY . .
+
+# Создаем директории для результатов
+RUN mkdir -p /reports/TestResults
+
+# Восстанавливаем зависимости для всех тестовых проектов
+RUN dotnet restore file_storing_service.tests/
+RUN dotnet restore file_analysis_service.tests/
+RUN dotnet restore api_gateway.tests/
+
+# Запускаем тесты с покрытием и подробным выводом
+RUN echo "Running File Storing Service tests..." && \
+    dotnet test file_storing_service.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /reports/TestResults/file-storing \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+RUN echo "Running File Analysis Service tests..." && \
+    dotnet test file_analysis_service.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /reports/TestResults/file-analysis \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+RUN echo "Running API Gateway tests..." && \
+    dotnet test api_gateway.tests/ \
+    --collect:"XPlat Code Coverage" \
+    --results-directory /reports/TestResults/api-gateway \
+    --logger "console;verbosity=detailed" \
+    --no-restore
+
+# Выводим информацию о результатах
+CMD ["sh", "-c", "echo 'Test execution completed!' && find /reports/TestResults -name '*.xml' -o -name 'coverage*'"] 
