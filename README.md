@@ -24,7 +24,7 @@ sudo apt install dotnet-sdk-8.0
 
 ### 2. Запустить систему
 ```bash
-git clone <ссылка-на-репозиторий>
+git clone <https://github.com/KJkloun/text-analyzer-csharp>
 cd text-analyzer-csharp
 ./start-services.sh
 ```
